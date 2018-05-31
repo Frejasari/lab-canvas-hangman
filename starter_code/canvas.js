@@ -10,8 +10,20 @@ HangmanCanvas.prototype.createBoard = function() {
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 };
 
-HangmanCanvas.prototype.drawLines = function () {
-
+HangmanCanvas.prototype.drawLines = function() {
+  var letterSpace = this.unit * 2;
+  var gapSpace = this.unit;
+  for (var i = 0; i < this.secretWord.length; i++) {
+    var offset = this.unit * 5;
+    var startX = (letterSpace + gapSpace) * i;
+    var endX = startX + letterSpace;
+    console.log("startX: " + startX + " endX: " + endX + " i: " + i);
+    this.ctx.beginPath();
+    this.ctx.moveTo(startX, this.canvas.height - 100);
+    this.ctx.lineTo(endX, this.canvas.height - 100);
+    this.ctx.closePath();
+    this.ctx.stroke();
+  }
 };
 
 HangmanCanvas.prototype.writeCorrectLetter = function(index) {};
